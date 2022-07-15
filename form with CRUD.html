@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>form with CRUD</title>
+  
+</head>
+<body>
+    <script>
+          function onFormSubmit (){
+            var formData= readFormData();
+            insertNewRecord(formData);
+
+          }
+
+
+        function readFormData(){
+         var formData={};
+         formData["name"]= document.getElementById("Name").value;
+          formData["email"]= document.getElementById("Email").value;
+         formData["contact"]= document.getElementById("Contact").value;
+         return formData;
+        }
+        function insertNewRecord(data){
+            var table = document.getElementById("List").getElementByTagName('tbody')[0];
+            var newrow = table.insertRow(table.length);
+            cell1 = newRow.insertcell(0);
+            cell1.innerHTML = Data.Name;
+            cell2 = newRow.insertcell(1);
+            cell2.innerHTML = Data.Email;
+            cell2 = newRow.insertcell(2);
+            cell2.innerHTML = Data.Contact;
+            cell1 = newRow.insertcell(3);
+            cell1.innerHTML =`<a>Edit</a>
+                              <a>Delete</a>`;
+            
+        }
+    </script>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="name"placeholder=" Please Enter Your Name" id="Name">
+                    </div>
+                    <div>
+                        <label> Email </label>
+                        <input type="email" name="email"placeholder=" Please Enter Your Email"id="Email">
+                    </div>
+                    <div>
+                        <label> contact</label>
+                        <input type="number" name="contact"id="Contact">
+                    </div>
+                    <div class="form-action-button">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="List">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+                            <th> Email </th>
+                            <th> contact</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
